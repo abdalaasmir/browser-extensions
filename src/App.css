@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --bodyBackground: #ebf9ff;
+  --elemnetsBacground: #ffffff;
+  --text: #000000af;
+  --active: #e2dedeaf;
+  --border: none;
+  --defultToggleCirclePostion: 4px;
+  --defulttogglebackground: #9ca3af;
+}
+.d-none {
+  display: none;
+}
+.d-block {
+  display: block;
+}
+img {
+  width: auto;
+  height: auto;
+}
+.toggelActivated {
+  --defultToggleCirclePostion: 28px;
+  --defulttogglebackground: #ff0000af;
+}
+.activeButton {
+  background-color: #ff0000af;
+  --defulttogglebackground: #ff0000af;
+}
+.activeCircle {
+  --defultToggleCirclePostion: 28px;
+
+  left: 28px;
+}
+.activateButton button {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  border-radius: 20px;
+  background-color: var(--defulttogglebackground);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.activateButton span {
+  position: absolute;
+  top: 4px;
+  left: var(--defultToggleCirclePostion);
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.dark {
+  --bodyBackground: #0d1224;
+  --elemnetsBacground: #1f2535;
+  --text: #cdd9da;
+  --active: #ff0000af;
+  --border: 1px rgb(255, 0, 0);
+}
+
+body {
+  background-color: var(--bodyBackground);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+img {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.content {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  color: var(--text);
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.header {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  color: var(--text);
+
+  width: 80%;
+  background-color: var(--elemnetsBacground);
+  border-radius: 20px;
+
+  padding: 10px;
+}
+.card {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  color: var(--text);
+  background-color: var(--elemnetsBacground);
+  border-radius: 20px;
+  border: var(--border);
+  border-color: white;
+  border-width: 20px;
+}
+.cardContent {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  color: var(--text);
+
+  height: fit-content;
+}
+.cardContent p {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  color: var(--text);
+
+  opacity: 0.5;
+  font-size: small;
+}
+
+.remove {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  color: var(--text);
+
+  border-width: 0.5px;
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.remove:hover {
+  border-color: rgb(216, 69, 32);
+}
+img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Fade-in for filtered cards */
+.fade-in {
+  opacity: 0;
+  transform: translateY(4px);
+  animation: fadeIn 220ms ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
