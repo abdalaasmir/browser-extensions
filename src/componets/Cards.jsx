@@ -4,19 +4,13 @@ import ToggleButton from "./activeToggelInCard";
 
 const Cards = ({ filter }) => {
   const [activeByIndex, setActiveByIndex] = useState(() =>
-    data.map(
-      (_, index) => localStorage.getItem(`toggel${index}`) === "activated"
-    )
+    data.map(() => false)
   );
 
   const handleToggle = (index) => {
     setActiveByIndex((prev) => {
       const next = [...prev];
       next[index] = !prev[index];
-      localStorage.setItem(
-        `toggel${index}`,
-        next[index] ? "activated" : "inActive"
-      );
       return next;
     });
   };
