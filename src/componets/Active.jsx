@@ -2,7 +2,7 @@ import NavActive from "./navActive";
 import NavAll from "./navAll";
 import NavInactive from "./navInactive";
 
-const Active = ({ filter, onChangeFilter }) => {
+const Active = ({ filter, onChangeFilter, onReset }) => {
   return (
     <>
       <div className="listOfActive p-5 m-5">
@@ -11,7 +11,7 @@ const Active = ({ filter, onChangeFilter }) => {
             Extension List
           </h1>
 
-          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center sm:justify-end">
+          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center sm:justify-end items-center">
             <NavActive
               isActive={filter === "active"}
               onClick={() => onChangeFilter("active")}
@@ -24,6 +24,8 @@ const Active = ({ filter, onChangeFilter }) => {
               isActive={filter === "inactive"}
               onClick={() => onChangeFilter("inactive")}
             />
+
+            {/* Reset Button */}
           </div>
         </div>
       </div>

@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useState, forwardRef, useImperativeHandle } from "react";
 import data from "./data.json";
 import ToggleButton from "./activeToggelInCard";
 import Remove from "./remove";
 
-const Cards = ({ filter }) => {
+const Cards = forwardRef(({ filter }, ref) => {
   const [cardsData, setCardsData] = useState(data);
 
   const [activeByIndex, setActiveByIndex] = useState(() =>
     data.map(() => false)
   );
+
+  // Expose reset function to parent component
+  useImperativeHandle(ref, () => ({
+    resetCards: () => {
+      setCardsData(data);
+      setActiveByIndex(data.map(() => false));
+    },
+  }));
 
   const handleToggle = (index) => {
     setActiveByIndex((prev) => {
@@ -63,6 +71,6 @@ const Cards = ({ filter }) => {
       })}
     </div>
   );
-};
+});
 
 export default Cards;
