@@ -154,7 +154,10 @@ img {
   width: 50px;
   height: 50px;
 }
-
+button img {
+  width: 30px;
+  height: 30px;
+}
 .fade-in {
   opacity: 0;
   transform: translateY(4px);
