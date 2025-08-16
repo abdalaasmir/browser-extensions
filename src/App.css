@@ -77,15 +77,32 @@ img {
   left: 50%;
   transform: translateX(-50%);
 }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  z-index: 1;
+}
+
 .header {
   transition: background-color 0.4s ease, color 0.4s ease;
   color: var(--text);
-
-  width: 80%;
+  width: 100%;
   background-color: var(--elemnetsBacground);
   border-radius: 20px;
-
   padding: 10px;
+  margin: 20px 0;
+  box-sizing: border-box;
+}
+
+.listOfActive {
+  margin-top: 100px !important;
 }
 .card {
   transition: background-color 0.4s ease, color 0.4s ease;

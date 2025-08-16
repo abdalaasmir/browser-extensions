@@ -1,8 +1,11 @@
 import { useState } from "react";
 import data from "./data.json";
 import ToggleButton from "./activeToggelInCard";
+import Remove from "./remove";
 
 const Cards = ({ filter }) => {
+  const [cardsData, setCardsData] = useState(data);
+
   const [activeByIndex, setActiveByIndex] = useState(() =>
     data.map(() => false)
   );
@@ -15,6 +18,15 @@ const Cards = ({ filter }) => {
     });
   };
 
+  const handleRemove = (indexToRemove) => {
+    setCardsData((prevData) =>
+      prevData.filter((_, index) => index !== indexToRemove)
+    );
+    setActiveByIndex((prevActive) =>
+      prevActive.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
   const shouldShow = (index) => {
     if (filter === "active") return !!activeByIndex[index];
     if (filter === "inactive") return !activeByIndex[index];
@@ -23,7 +35,7 @@ const Cards = ({ filter }) => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 m-4">
-      {data.map((item, index) => {
+      {cardsData.map((item, index) => {
         if (!shouldShow(index)) return null;
         return (
           <div
@@ -39,9 +51,7 @@ const Cards = ({ filter }) => {
             </div>
 
             <div className="flex justify-between items-center mt-4">
-              <button className="px-4 py-1 m-1 remove rounded-full hover:bg-gray-500 transition-colors duration-200">
-                Remove
-              </button>
+              <Remove onRemove={() => handleRemove(index)} />
               <ToggleButton
                 active={!!activeByIndex[index]}
                 onToggle={() => handleToggle(index)}
